@@ -31,7 +31,7 @@ jobs:
         working-directory: ./app
         run: |
           npm install jest
-          npm test
+          sudo npm test
   deploy:
     environment:
       name: github-pages
