@@ -26,10 +26,9 @@ jobs:
   Jest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-        with: 
-          path: "./app/"
+      - uses: actions/checkout@v4
       - name: Run Tests
+        working-directory: ./app
         run: |
           npm install 
           npm test
