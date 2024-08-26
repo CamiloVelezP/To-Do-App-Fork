@@ -23,6 +23,14 @@ concurrency:
 
 jobs:
   # Single deploy job since we're just deploying
+  Jest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Tests
+        run: |
+          npm install 
+          npm test
   deploy:
     environment:
       name: github-pages
