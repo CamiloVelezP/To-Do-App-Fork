@@ -32,4 +32,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/to-do-a´´:latest
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/to-do-app:latest
