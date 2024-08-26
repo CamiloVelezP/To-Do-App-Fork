@@ -27,4 +27,4 @@ jobs:
         username: ${{secrets.DOCKER_USERNAME }}
         password: ${{secrets.DOCKER_PASSWORD }}
     - name: push the image
-      run: docker push to-do-app:latest
+      run: docker camilovelezp/push to-do-app
