@@ -19,8 +19,8 @@ jobs:
       - name: Run Tests
         working-directory: ./app
         run: |
-          npm install jest
-          npm test
+          yarn install 
+          yarn test
 
   build-push:
 
