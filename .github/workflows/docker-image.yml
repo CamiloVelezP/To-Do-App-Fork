@@ -17,9 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Tests
-        working-directory: ./app/spec/routes
+        working-directory: ./app
         run: |
-          mkdir -p /home/runner/todos
           yarn install 
           yarn test
 
