@@ -16,11 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name : Copy necessary file
-        run: |
-          mkdir -p /home/runner/todos
-          cp -r /etc/todos/* /home/runner/todos
-          chmod -R 755 /home/runner/todos
       - name: Run Tests
         working-directory: ./app
         run: |
