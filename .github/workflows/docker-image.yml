@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   Jest:
-    runs-on: node:12-alpine
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Run Tests
