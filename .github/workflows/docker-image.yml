@@ -19,6 +19,7 @@ jobs:
       - name: Run Tests
         working-directory: ./app
         run: |
+          mkdir -p /home/runner/todos
           yarn install 
           yarn test
 
