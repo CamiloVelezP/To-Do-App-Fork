@@ -50,6 +50,8 @@ jobs:
       run: docker pull ${{secrets.DOCKER_USERNAME }}/to-do-app:latest
     - name: Stop instances of image
       run: docker stop app
+    - name: remove container
+      run: docker rm app 
     - name: Run Docker Container
       run: docker run -d -p 3000:3000 --name app ${{secrets.DOCKER_USERNAME }}/to-do-app:latest
       
