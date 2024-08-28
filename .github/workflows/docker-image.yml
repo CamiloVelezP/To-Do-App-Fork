@@ -45,10 +45,12 @@ jobs:
   deploy: 
     runs-on: self-hosted
     needs: [Jest, build-push]
-    steps: 
+    steps:
     - name: Pull Docker Image
       run: docker pull ${{secrets.DOCKER_USERNAME }}/to-do-app:latest
+    - name: Stop instances of image
+      run: docker stop app
     - name: Run Docker Container
-      run: docker run ${{secrets.DOCKER_USERNAME }}/to-do-app:latest
+      run: docker run -d -p 3000:3000 --name app ${{secrets.DOCKER_USERNAME }}/to-do-app:latest
       
   
