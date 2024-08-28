@@ -3,6 +3,8 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
+    tags: 
+      -'v*'
 
 permissions:
   contents: read
@@ -23,6 +25,7 @@ jobs:
   build-push:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
+    needs: Jest
     steps:
     - uses: actions/checkout@v4
     - name: login to docker hub
@@ -38,3 +41,14 @@ jobs:
         context: ./app
         push: true
         tags: ${{secrets.DOCKER_USERNAME }}/to-do-app:latest
+        
+  deploy: 
+    runs-on: self-hosted
+    needs: [Jest, build-push]
+    steps: 
+    - name: Pull Docker Image
+      run: docker pull ${{secrets.DOCKER_USERNAME }}/to-do-app:latest
+    - name: Run Docker Container
+      run: docker run ${{secrets.DOCKER_USERNAME }}/to-do-app:latest
+      
+  
