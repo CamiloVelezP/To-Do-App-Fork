@@ -8,14 +8,15 @@ on:
 
 permissions:
   contents: read
-  pages: write
   id-token: write
 
 jobs:
   Jest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        
       - name: Run Tests
         working-directory: ./app
         run: |
@@ -37,8 +38,6 @@ jobs:
         images: |
             ${{secrets.DOCKER_USERNAME }}/to-do-app
         tags: |
-            type=ref,event=branch
-            type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             
